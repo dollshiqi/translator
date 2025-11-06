@@ -230,7 +230,7 @@
         </div>
 
         <div class="button-group">
-            <button class="translate-btn" id="translateBtn" onclick="translate()">翻译</button>
+            <button class="translate-btn" id="translateBtn" onclick="translateText()">翻译</button>
             <button class="swap-btn" onclick="swapLanguages()">交换语言</button>
             <button class="clear-btn" onclick="clearAll()">清除</button>
         </div>
@@ -271,7 +271,7 @@
         }
 
         // 翻译函数
-        async function translate() {
+        async function translateText() {
             const text = inputText.value.trim();
             const sourceLang = convertLanguageCode(sourceLanguage.value);
             const targetLang = convertLanguageCode(targetLanguage.value);
@@ -362,7 +362,7 @@
         // 支持Enter键快速翻译（Ctrl/Cmd + Enter）
         inputText.addEventListener('keydown', function(e) {
             if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-                translate();
+                translateText();
             }
         });
     </script>
