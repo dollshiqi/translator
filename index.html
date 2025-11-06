@@ -294,34 +294,22 @@
             outputText.value = '';
 
             try {
-                // 使用LibreTranslate API (完全免费，开源)
-                const url = 'https://libretranslate.com/translate';
+                // 使用MyMemory Translation API (免费，每天10000次请求)
+                const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${sourceLang}|${targetLang}`;
 
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        q: text,
-                        source: sourceLang,
-                        target: targetLang,
-                        format: 'text'
-                    })
-                });
-
+                const response = await fetch(url);
                 const data = await response.json();
 
-                if (data.translatedText) {
-                    outputText.value = data.translatedText;
-                } else if (data.error) {
-                    throw new Error(data.error);
+                if (data.responseStatus === 200 && data.responseData && data.responseData.translatedText) {
+                    outputText.value = data.responseData.translatedText;
+                } else if (data.responseStatus === 403) {
+                    throw new Error('超过每日请求限制，请明天再试');
                 } else {
                     throw new Error('翻译服务返回错误');
                 }
             } catch (error) {
                 console.error('翻译错误:', error);
-                showError('翻译失败，请稍后重试。可能是网络问题或服务限制。');
+                showError('翻译失败：' + error.message);
             } finally {
                 translateBtn.disabled = false;
                 loadingMessage.style.display = 'none';
