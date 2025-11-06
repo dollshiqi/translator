@@ -260,11 +260,21 @@
             }
         });
 
+        // 语言代码映射（将页面语言代码转换为LibreTranslate支持的代码）
+        function convertLanguageCode(code) {
+            const mapping = {
+                'zh-CN': 'zh',
+                'en': 'en',
+                'de': 'de'
+            };
+            return mapping[code] || code;
+        }
+
         // 翻译函数
         async function translate() {
             const text = inputText.value.trim();
-            const sourceLang = sourceLanguage.value;
-            const targetLang = targetLanguage.value;
+            const sourceLang = convertLanguageCode(sourceLanguage.value);
+            const targetLang = convertLanguageCode(targetLanguage.value);
 
             // 验证
             if (!text) {
@@ -284,21 +294,34 @@
             outputText.value = '';
 
             try {
-                // 使用MyMemory Translation API (免费，无需API密钥)
-                const langPair = `${sourceLang}|${targetLang}`;
-                const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${langPair}`;
+                // 使用LibreTranslate API (完全免费，开源)
+                const url = 'https://libretranslate.com/translate';
 
-                const response = await fetch(url);
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        q: text,
+                        source: sourceLang,
+                        target: targetLang,
+                        format: 'text'
+                    })
+                });
+
                 const data = await response.json();
 
-                if (data.responseStatus === 200 && data.responseData) {
-                    outputText.value = data.responseData.translatedText;
+                if (data.translatedText) {
+                    outputText.value = data.translatedText;
+                } else if (data.error) {
+                    throw new Error(data.error);
                 } else {
                     throw new Error('翻译服务返回错误');
                 }
             } catch (error) {
                 console.error('翻译错误:', error);
-                showError('翻译失败，请稍后重试。可能是网络问题或API限制。');
+                showError('翻译失败，请稍后重试。可能是网络问题或服务限制。');
             } finally {
                 translateBtn.disabled = false;
                 loadingMessage.style.display = 'none';
