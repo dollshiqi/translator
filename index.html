@@ -580,7 +580,15 @@
         // 获取德语词典信息
         async function fetchGermanDictionary(word, translation) {
             try {
-                // 使用Wiktionary API获取德语词典信息
+                // 首先尝试从内置词库获取信息
+                const builtInInfo = getGermanWordInfo(word);
+
+                if (builtInInfo) {
+                    displayGermanDictionaryEnhanced(word, translation, builtInInfo);
+                    return;
+                }
+
+                // 如果内置词库没有，尝试使用Wiktionary API
                 const response = await fetch(`https://de.wiktionary.org/api/rest_v1/page/summary/${encodeURIComponent(word)}`);
 
                 if (!response.ok) {
@@ -596,6 +604,174 @@
                 // 显示基础信息
                 displayGermanBasicInfo(word, translation);
             }
+        }
+
+        // 内置德语词库
+        function getGermanWordInfo(word) {
+            const germanDict = {
+                'haus': {
+                    article: 'das',
+                    plural: 'Häuser',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '房子，住宅', example: 'Ich wohne in einem großen Haus.' },
+                        { def: '家', example: 'Er ist zu Haus.' }
+                    ]
+                },
+                'wasser': {
+                    article: 'das',
+                    plural: '-',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '水', example: 'Ich möchte ein Glas Wasser.' },
+                        { def: '水域', example: 'Das Wasser des Sees ist klar.' }
+                    ]
+                },
+                'buch': {
+                    article: 'das',
+                    plural: 'Bücher',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '书，书籍', example: 'Ich lese ein interessantes Buch.' },
+                        { def: '账簿', example: 'Das Buch führen.' }
+                    ]
+                },
+                'auto': {
+                    article: 'das',
+                    plural: 'Autos',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '汽车', example: 'Ich fahre mit dem Auto zur Arbeit.' }
+                    ]
+                },
+                'baum': {
+                    article: 'der',
+                    plural: 'Bäume',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '树', example: 'Der Baum ist sehr alt.' }
+                    ]
+                },
+                'katze': {
+                    article: 'die',
+                    plural: 'Katzen',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '猫', example: 'Die Katze schläft auf dem Sofa.' }
+                    ]
+                },
+                'hund': {
+                    article: 'der',
+                    plural: 'Hunde',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '狗', example: 'Der Hund bellt laut.' }
+                    ]
+                },
+                'schule': {
+                    article: 'die',
+                    plural: 'Schulen',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '学校', example: 'Die Kinder gehen zur Schule.' }
+                    ]
+                },
+                'haben': {
+                    article: '',
+                    plural: '',
+                    type: '动词',
+                    conjugation: 'ich habe, du hast, er/sie/es hat',
+                    meanings: [
+                        { def: '有，拥有', example: 'Ich habe einen Hund.' },
+                        { def: '（助动词）已经', example: 'Ich habe gegessen.' }
+                    ]
+                },
+                'sein': {
+                    article: '',
+                    plural: '',
+                    type: '动词',
+                    conjugation: 'ich bin, du bist, er/sie/es ist',
+                    meanings: [
+                        { def: '是', example: 'Ich bin müde.' },
+                        { def: '（助动词）已经', example: 'Ich bin gegangen.' }
+                    ]
+                },
+                'gut': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '好的，良好的', example: 'Das Wetter ist gut.' },
+                        { def: '善良的', example: 'Er ist ein guter Mensch.' }
+                    ]
+                },
+                'schön': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '美丽的，漂亮的', example: 'Das ist ein schönes Bild.' },
+                        { def: '美好的', example: 'Einen schönen Tag!' }
+                    ]
+                }
+            };
+
+            return germanDict[word.toLowerCase()];
+        }
+
+        // 显示增强版德语词典
+        function displayGermanDictionaryEnhanced(word, translation, wordInfo) {
+            const dictionarySection = document.getElementById('dictionarySection');
+            const dictionaryContent = document.getElementById('dictionaryContent');
+
+            let html = '';
+            html += `<div class="word-entry">`;
+            html += `<div class="word-header">`;
+            html += `<div>`;
+
+            // 显示带冠词的单词
+            if (wordInfo.article) {
+                html += `<span class="word-title">${wordInfo.article} ${word.charAt(0).toUpperCase() + word.slice(1)}</span>`;
+            } else {
+                html += `<span class="word-title">${word}</span>`;
+            }
+
+            html += `<span class="phonetic">${wordInfo.type}</span>`;
+            html += `</div>`;
+            html += `</div>`;
+
+            // 显示复数形式
+            if (wordInfo.plural) {
+                html += `<div class="meaning-block">`;
+                html += `<span class="part-of-speech">词形变化</span>`;
+                html += `<div class="definition">`;
+                html += `<div class="definition-item"><strong>复数：</strong> ${wordInfo.plural}</div>`;
+                if (wordInfo.conjugation) {
+                    html += `<div class="definition-item"><strong>变位：</strong> ${wordInfo.conjugation}</div>`;
+                }
+                html += `</div>`;
+                html += `</div>`;
+            }
+
+            // 显示释义
+            html += `<div class="meaning-block">`;
+            html += `<span class="part-of-speech">释义</span>`;
+            html += `<div class="definition">`;
+
+            wordInfo.meanings.forEach((meaning, index) => {
+                html += `<div class="definition-item">${index + 1}. ${meaning.def}</div>`;
+                if (meaning.example) {
+                    html += `<div class="example">${meaning.example}</div>`;
+                }
+            });
+
+            html += `</div>`;
+            html += `</div>`;
+
+            html += `</div>`;
+
+            dictionaryContent.innerHTML = html;
+            dictionarySection.style.display = 'block';
         }
 
         // 获取中文到德语的多个选项
