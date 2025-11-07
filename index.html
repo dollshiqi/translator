@@ -177,6 +177,133 @@
             margin-top: 5px;
         }
 
+        .dictionary-section {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .dictionary-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+
+        .word-entry {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .word-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .word-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .phonetic {
+            color: #764ba2;
+            font-style: italic;
+            font-size: 1.2em;
+            margin-left: 15px;
+        }
+
+        .audio-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .audio-btn:hover {
+            background: #764ba2;
+            transform: scale(1.1);
+        }
+
+        .meaning-block {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+        }
+
+        .part-of-speech {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .definition {
+            margin: 10px 0;
+            padding-left: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .definition-item {
+            margin: 8px 0;
+            position: relative;
+        }
+
+        .definition-item:before {
+            content: "•";
+            position: absolute;
+            left: -15px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .example {
+            margin-top: 10px;
+            padding: 10px;
+            background: white;
+            border-left: 3px solid #4CAF50;
+            border-radius: 5px;
+            font-style: italic;
+            color: #555;
+        }
+
+        .example:before {
+            content: "例句: ";
+            font-weight: bold;
+            color: #4CAF50;
+            font-style: normal;
+        }
+
+        .synonyms {
+            margin-top: 10px;
+            color: #666;
+        }
+
+        .synonyms strong {
+            color: #764ba2;
+        }
+
         @media (max-width: 768px) {
             .translator-box {
                 grid-template-columns: 1fr;
@@ -192,6 +319,20 @@
 
             button {
                 width: 100%;
+            }
+
+            .word-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .word-title {
+                font-size: 1.5em;
+            }
+
+            .phonetic {
+                margin-left: 0;
+                margin-top: 5px;
             }
         }
     </style>
@@ -237,6 +378,12 @@
 
         <div id="loadingMessage" class="loading" style="display: none;">正在翻译中...</div>
         <div id="errorMessage" class="error" style="display: none;"></div>
+
+        <!-- 词典信息区域 -->
+        <div id="dictionarySection" class="dictionary-section" style="display: none;">
+            <h2>📖 词典详情</h2>
+            <div id="dictionaryContent"></div>
+        </div>
     </div>
 
     <script>
@@ -292,6 +439,7 @@
             loadingMessage.style.display = 'block';
             errorMessage.style.display = 'none';
             outputText.value = '';
+            document.getElementById('dictionarySection').style.display = 'none';
 
             try {
                 // 使用MyMemory Translation API (免费，每天10000次请求)
@@ -302,6 +450,12 @@
 
                 if (data.responseStatus === 200 && data.responseData && data.responseData.translatedText) {
                     outputText.value = data.responseData.translatedText;
+
+                    // 如果输入是英文单词（1-3个单词），则获取词典信息
+                    const wordCount = text.trim().split(/\s+/).length;
+                    if (sourceLang === 'en' && wordCount <= 3) {
+                        await fetchDictionaryInfo(text.toLowerCase());
+                    }
                 } else if (data.responseStatus === 403) {
                     throw new Error('超过每日请求限制，请明天再试');
                 } else {
@@ -314,6 +468,90 @@
                 translateBtn.disabled = false;
                 loadingMessage.style.display = 'none';
             }
+        }
+
+        // 获取词典信息
+        async function fetchDictionaryInfo(word) {
+            try {
+                // 使用Free Dictionary API
+                const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`);
+
+                if (!response.ok) {
+                    // 如果找不到词典信息，不显示错误，只是不显示词典区域
+                    return;
+                }
+
+                const data = await response.json();
+                displayDictionaryInfo(data);
+            } catch (error) {
+                console.log('词典信息获取失败:', error);
+                // 词典信息获取失败不影响翻译功能
+            }
+        }
+
+        // 显示词典信息
+        function displayDictionaryInfo(data) {
+            const dictionarySection = document.getElementById('dictionarySection');
+            const dictionaryContent = document.getElementById('dictionaryContent');
+
+            let html = '';
+
+            data.forEach((entry, index) => {
+                const word = entry.word;
+                const phonetic = entry.phonetic || '';
+                const phoneticAudio = entry.phonetics.find(p => p.audio)?.audio || '';
+
+                html += `<div class="word-entry">`;
+                html += `<div class="word-header">`;
+                html += `<div>`;
+                html += `<span class="word-title">${word}</span>`;
+                if (phonetic) {
+                    html += `<span class="phonetic">${phonetic}</span>`;
+                }
+                html += `</div>`;
+                if (phoneticAudio) {
+                    html += `<button class="audio-btn" onclick="playPronunciation('${phoneticAudio}')" title="播放发音">🔊</button>`;
+                }
+                html += `</div>`;
+
+                // 显示各个词性的释义
+                entry.meanings.forEach(meaning => {
+                    html += `<div class="meaning-block">`;
+                    html += `<span class="part-of-speech">${meaning.partOfSpeech}</span>`;
+
+                    html += `<div class="definition">`;
+                    meaning.definitions.slice(0, 3).forEach((def, idx) => {
+                        html += `<div class="definition-item">${def.definition}</div>`;
+
+                        // 显示例句
+                        if (def.example) {
+                            html += `<div class="example">${def.example}</div>`;
+                        }
+                    });
+                    html += `</div>`;
+
+                    // 显示同义词
+                    if (meaning.synonyms && meaning.synonyms.length > 0) {
+                        html += `<div class="synonyms"><strong>同义词:</strong> ${meaning.synonyms.slice(0, 5).join(', ')}</div>`;
+                    }
+
+                    html += `</div>`;
+                });
+
+                html += `</div>`;
+            });
+
+            dictionaryContent.innerHTML = html;
+            dictionarySection.style.display = 'block';
+        }
+
+        // 播放发音
+        function playPronunciation(audioUrl) {
+            const audio = new Audio(audioUrl);
+            audio.play().catch(error => {
+                console.error('播放发音失败:', error);
+                showError('播放发音失败');
+            });
         }
 
         // 交换语言
@@ -336,6 +574,7 @@
             outputText.value = '';
             errorMessage.style.display = 'none';
             charCount.textContent = '0';
+            document.getElementById('dictionarySection').style.display = 'none';
         }
 
         // 显示错误信息
