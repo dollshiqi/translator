@@ -609,6 +609,7 @@
         // 内置德语词库
         function getGermanWordInfo(word) {
             const germanDict = {
+                // ========== 名词（中性） ==========
                 'haus': {
                     article: 'das',
                     plural: 'Häuser',
@@ -644,20 +645,103 @@
                         { def: '汽车', example: 'Ich fahre mit dem Auto zur Arbeit.' }
                     ]
                 },
+                'kind': {
+                    article: 'das',
+                    plural: 'Kinder',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '孩子，儿童', example: 'Das Kind spielt im Garten.' }
+                    ]
+                },
+                'fenster': {
+                    article: 'das',
+                    plural: 'Fenster',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '窗户', example: 'Bitte öffne das Fenster.' }
+                    ]
+                },
+                'zimmer': {
+                    article: 'das',
+                    plural: 'Zimmer',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '房间', example: 'Das Zimmer ist sehr hell.' }
+                    ]
+                },
+                'brot': {
+                    article: 'das',
+                    plural: 'Brote',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '面包', example: 'Ich esse gern deutsches Brot.' }
+                    ]
+                },
+                'bier': {
+                    article: 'das',
+                    plural: 'Biere',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '啤酒', example: 'Ein Bier, bitte!' }
+                    ]
+                },
+                'essen': {
+                    article: 'das',
+                    plural: '-',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '食物，饭菜', example: 'Das Essen schmeckt gut.' }
+                    ]
+                },
+                'geld': {
+                    article: 'das',
+                    plural: '-',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '钱，金钱', example: 'Ich habe kein Geld.' }
+                    ]
+                },
+                'jahr': {
+                    article: 'das',
+                    plural: 'Jahre',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '年', example: 'Ich bin 25 Jahre alt.' }
+                    ]
+                },
+                'land': {
+                    article: 'das',
+                    plural: 'Länder',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '国家', example: 'Deutschland ist ein schönes Land.' },
+                        { def: '乡村', example: 'Wir leben auf dem Land.' }
+                    ]
+                },
+                'leben': {
+                    article: 'das',
+                    plural: '-',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '生活，生命', example: 'Das Leben ist schön.' }
+                    ]
+                },
+                'mädchen': {
+                    article: 'das',
+                    plural: 'Mädchen',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '女孩', example: 'Das Mädchen ist sehr nett.' }
+                    ]
+                },
+
+                // ========== 名词（阳性） ==========
                 'baum': {
                     article: 'der',
                     plural: 'Bäume',
                     type: '名词（阳性）',
                     meanings: [
                         { def: '树', example: 'Der Baum ist sehr alt.' }
-                    ]
-                },
-                'katze': {
-                    article: 'die',
-                    plural: 'Katzen',
-                    type: '名词（阴性）',
-                    meanings: [
-                        { def: '猫', example: 'Die Katze schläft auf dem Sofa.' }
                     ]
                 },
                 'hund': {
@@ -668,6 +752,120 @@
                         { def: '狗', example: 'Der Hund bellt laut.' }
                     ]
                 },
+                'mann': {
+                    article: 'der',
+                    plural: 'Männer',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '男人', example: 'Der Mann arbeitet im Büro.' }
+                    ]
+                },
+                'vater': {
+                    article: 'der',
+                    plural: 'Väter',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '父亲', example: 'Mein Vater ist Lehrer.' }
+                    ]
+                },
+                'bruder': {
+                    article: 'der',
+                    plural: 'Brüder',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '兄弟', example: 'Mein Bruder wohnt in Berlin.' }
+                    ]
+                },
+                'tag': {
+                    article: 'der',
+                    plural: 'Tage',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '天，日子', example: 'Heute ist ein schöner Tag.' }
+                    ]
+                },
+                'tisch': {
+                    article: 'der',
+                    plural: 'Tische',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '桌子', example: 'Das Buch liegt auf dem Tisch.' }
+                    ]
+                },
+                'stuhl': {
+                    article: 'der',
+                    plural: 'Stühle',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '椅子', example: 'Bitte setzen Sie sich auf den Stuhl.' }
+                    ]
+                },
+                'freund': {
+                    article: 'der',
+                    plural: 'Freunde',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '朋友（男）', example: 'Er ist mein bester Freund.' }
+                    ]
+                },
+                'lehrer': {
+                    article: 'der',
+                    plural: 'Lehrer',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '老师（男）', example: 'Der Lehrer erklärt die Grammatik.' }
+                    ]
+                },
+                'arzt': {
+                    article: 'der',
+                    plural: 'Ärzte',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '医生（男）', example: 'Ich muss zum Arzt gehen.' }
+                    ]
+                },
+                'apfel': {
+                    article: 'der',
+                    plural: 'Äpfel',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '苹果', example: 'Ich esse jeden Tag einen Apfel.' }
+                    ]
+                },
+                'käse': {
+                    article: 'der',
+                    plural: '-',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '奶酪', example: 'Der Käse schmeckt sehr gut.' }
+                    ]
+                },
+                'kaffee': {
+                    article: 'der',
+                    plural: '-',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '咖啡', example: 'Ich trinke gern Kaffee.' }
+                    ]
+                },
+                'tee': {
+                    article: 'der',
+                    plural: '-',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '茶', example: 'Möchten Sie Tee oder Kaffee?' }
+                    ]
+                },
+
+                // ========== 名词（阴性） ==========
+                'katze': {
+                    article: 'die',
+                    plural: 'Katzen',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '猫', example: 'Die Katze schläft auf dem Sofa.' }
+                    ]
+                },
                 'schule': {
                     article: 'die',
                     plural: 'Schulen',
@@ -676,6 +874,113 @@
                         { def: '学校', example: 'Die Kinder gehen zur Schule.' }
                     ]
                 },
+                'frau': {
+                    article: 'die',
+                    plural: 'Frauen',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '女人', example: 'Die Frau ist sehr freundlich.' },
+                        { def: '夫人', example: 'Guten Tag, Frau Müller!' }
+                    ]
+                },
+                'mutter': {
+                    article: 'die',
+                    plural: 'Mütter',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '母亲', example: 'Meine Mutter kocht sehr gut.' }
+                    ]
+                },
+                'schwester': {
+                    article: 'die',
+                    plural: 'Schwestern',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '姐妹', example: 'Meine Schwester studiert Medizin.' }
+                    ]
+                },
+                'stadt': {
+                    article: 'die',
+                    plural: 'Städte',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '城市', example: 'Berlin ist eine große Stadt.' }
+                    ]
+                },
+                'tür': {
+                    article: 'die',
+                    plural: 'Türen',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '门', example: 'Bitte schließen Sie die Tür.' }
+                    ]
+                },
+                'hand': {
+                    article: 'die',
+                    plural: 'Hände',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '手', example: 'Wasch dir die Hände!' }
+                    ]
+                },
+                'zeit': {
+                    article: 'die',
+                    plural: 'Zeiten',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '时间', example: 'Wir haben keine Zeit.' }
+                    ]
+                },
+                'arbeit': {
+                    article: 'die',
+                    plural: 'Arbeiten',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '工作', example: 'Die Arbeit macht mir Spaß.' }
+                    ]
+                },
+                'sprache': {
+                    article: 'die',
+                    plural: 'Sprachen',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '语言', example: 'Ich lerne eine neue Sprache.' }
+                    ]
+                },
+                'freundin': {
+                    article: 'die',
+                    plural: 'Freundinnen',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '朋友（女）', example: 'Sie ist meine beste Freundin.' }
+                    ]
+                },
+                'lehrerin': {
+                    article: 'die',
+                    plural: 'Lehrerinnen',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '老师（女）', example: 'Die Lehrerin ist sehr nett.' }
+                    ]
+                },
+                'blume': {
+                    article: 'die',
+                    plural: 'Blumen',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '花', example: 'Die Blumen sind sehr schön.' }
+                    ]
+                },
+                'familie': {
+                    article: 'die',
+                    plural: 'Familien',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '家庭', example: 'Meine Familie ist sehr wichtig für mich.' }
+                    ]
+                },
+
+                // ========== 常用动词 ==========
                 'haben': {
                     article: '',
                     plural: '',
@@ -696,6 +1001,232 @@
                         { def: '（助动词）已经', example: 'Ich bin gegangen.' }
                     ]
                 },
+                'werden': {
+                    article: '',
+                    plural: '',
+                    type: '动词',
+                    conjugation: 'ich werde, du wirst, er/sie/es wird',
+                    meanings: [
+                        { def: '变成，成为', example: 'Ich werde Arzt.' },
+                        { def: '（将来时助动词）', example: 'Ich werde lernen.' }
+                    ]
+                },
+                'gehen': {
+                    article: '',
+                    plural: '',
+                    type: '动词',
+                    conjugation: 'ich gehe, du gehst, er/sie/es geht',
+                    meanings: [
+                        { def: '走，去', example: 'Ich gehe nach Hause.' },
+                        { def: '进行', example: 'Wie geht es dir?' }
+                    ]
+                },
+                'kommen': {
+                    article: '',
+                    plural: '',
+                    type: '动词',
+                    conjugation: 'ich komme, du kommst, er/sie/es kommt',
+                    meanings: [
+                        { def: '来', example: 'Ich komme aus China.' },
+                        { def: '到达', example: 'Wann kommst du?' }
+                    ]
+                },
+                'machen': {
+                    article: '',
+                    plural: '',
+                    type: '动词',
+                    conjugation: 'ich mache, du machst, er/sie/es macht',
+                    meanings: [
+                        { def: '做，制作', example: 'Was machst du?' },
+                        { def: '使，让', example: 'Das macht Spaß.' }
+                    ]
+                },
+                'sehen': {
+                    article: '',
+                    plural: '',
+                    type: '动词',
+                    conjugation: 'ich sehe, du siehst, er/sie/es sieht',
+                    meanings: [
+                        { def: '看见', example: 'Ich sehe einen Vogel.' },
+                        { def: '看', example: 'Sieh mal!' }
+                    ]
+                },
+                'können': {
+                    article: '',
+                    plural: '',
+                    type: '情态动词',
+                    conjugation: 'ich kann, du kannst, er/sie/es kann',
+                    meanings: [
+                        { def: '能够，会', example: 'Ich kann Deutsch sprechen.' },
+                        { def: '可能', example: 'Das kann sein.' }
+                    ]
+                },
+                'wollen': {
+                    article: '',
+                    plural: '',
+                    type: '情态动词',
+                    conjugation: 'ich will, du willst, er/sie/es will',
+                    meanings: [
+                        { def: '想要', example: 'Ich will nach Hause gehen.' }
+                    ]
+                },
+                'müssen': {
+                    article: '',
+                    plural: '',
+                    type: '情态动词',
+                    conjugation: 'ich muss, du musst, er/sie/es muss',
+                    meanings: [
+                        { def: '必须', example: 'Ich muss arbeiten.' }
+                    ]
+                },
+                'sollen': {
+                    article: '',
+                    plural: '',
+                    type: '情态动词',
+                    conjugation: 'ich soll, du sollst, er/sie/es soll',
+                    meanings: [
+                        { def: '应该', example: 'Du sollst leise sein.' }
+                    ]
+                },
+                'mögen': {
+                    article: '',
+                    plural: '',
+                    type: '情态动词',
+                    conjugation: 'ich mag, du magst, er/sie/es mag',
+                    meanings: [
+                        { def: '喜欢', example: 'Ich mag Schokolade.' }
+                    ]
+                },
+                'dürfen': {
+                    article: '',
+                    plural: '',
+                    type: '情态动词',
+                    conjugation: 'ich darf, du darfst, er/sie/es darf',
+                    meanings: [
+                        { def: '被允许', example: 'Darf ich reinkommen?' }
+                    ]
+                },
+                'wissen': {
+                    article: '',
+                    plural: '',
+                    type: '动词',
+                    conjugation: 'ich weiß, du weißt, er/sie/es weiß',
+                    meanings: [
+                        { def: '知道', example: 'Ich weiß es nicht.' }
+                    ]
+                },
+                'sagen': {
+                    article: '',
+                    plural: '',
+                    type: '动词',
+                    conjugation: 'ich sage, du sagst, er/sie/es sagt',
+                    meanings: [
+                        { def: '说', example: 'Was sagst du?' }
+                    ]
+                },
+                'finden': {
+                    article: '',
+                    plural: '',
+                    type: '动词',
+                    conjugation: 'ich finde, du findest, er/sie/es findet',
+                    meanings: [
+                        { def: '找到，发现', example: 'Ich finde das Buch nicht.' },
+                        { def: '认为', example: 'Ich finde das gut.' }
+                    ]
+                },
+                'geben': {
+                    article: '',
+                    plural: '',
+                    type: '动词',
+                    conjugation: 'ich gebe, du gibst, er/sie/es gibt',
+                    meanings: [
+                        { def: '给', example: 'Gib mir das Buch.' },
+                        { def: '有（存在）', example: 'Es gibt viele Menschen.' }
+                    ]
+                },
+                'nehmen': {
+                    article: '',
+                    plural: '',
+                    type: '动词',
+                    conjugation: 'ich nehme, du nimmst, er/sie/es nimmt',
+                    meanings: [
+                        { def: '拿，取', example: 'Nimm dir einen Apfel.' }
+                    ]
+                },
+                'trinken': {
+                    article: '',
+                    plural: '',
+                    type: '动词',
+                    conjugation: 'ich trinke, du trinkst, er/sie/es trinkt',
+                    meanings: [
+                        { def: '喝', example: 'Ich trinke Wasser.' }
+                    ]
+                },
+                'sprechen': {
+                    article: '',
+                    plural: '',
+                    type: '动词',
+                    conjugation: 'ich spreche, du sprichst, er/sie/es spricht',
+                    meanings: [
+                        { def: '说，讲', example: 'Ich spreche Deutsch.' }
+                    ]
+                },
+                'lernen': {
+                    article: '',
+                    plural: '',
+                    type: '动词',
+                    conjugation: 'ich lerne, du lernst, er/sie/es lernt',
+                    meanings: [
+                        { def: '学习', example: 'Ich lerne Deutsch.' }
+                    ]
+                },
+                'arbeiten': {
+                    article: '',
+                    plural: '',
+                    type: '动词',
+                    conjugation: 'ich arbeite, du arbeitest, er/sie/es arbeitet',
+                    meanings: [
+                        { def: '工作', example: 'Ich arbeite in Berlin.' }
+                    ]
+                },
+                'wohnen': {
+                    article: '',
+                    plural: '',
+                    type: '动词',
+                    conjugation: 'ich wohne, du wohnst, er/sie/es wohnt',
+                    meanings: [
+                        { def: '居住', example: 'Ich wohne in München.' }
+                    ]
+                },
+                'kaufen': {
+                    article: '',
+                    plural: '',
+                    type: '动词',
+                    conjugation: 'ich kaufe, du kaufst, er/sie/es kauft',
+                    meanings: [
+                        { def: '买', example: 'Ich kaufe ein Buch.' }
+                    ]
+                },
+                'verkaufen': {
+                    article: '',
+                    plural: '',
+                    type: '动词',
+                    conjugation: 'ich verkaufe, du verkaufst, er/sie/es verkauft',
+                    meanings: [
+                        { def: '卖', example: 'Er verkauft sein Auto.' }
+                    ]
+                },
+                'schlafen': {
+                    article: '',
+                    plural: '',
+                    type: '动词',
+                    conjugation: 'ich schlafe, du schläfst, er/sie/es schläft',
+                    meanings: [
+                        { def: '睡觉', example: 'Das Baby schläft.' }
+                    ]
+                },
+
+                // ========== 形容词和副词 ==========
                 'gut': {
                     article: '',
                     plural: '',
@@ -712,6 +1243,1475 @@
                     meanings: [
                         { def: '美丽的，漂亮的', example: 'Das ist ein schönes Bild.' },
                         { def: '美好的', example: 'Einen schönen Tag!' }
+                    ]
+                },
+                'groß': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '大的', example: 'Das ist ein großes Haus.' },
+                        { def: '高的', example: 'Er ist sehr groß.' }
+                    ]
+                },
+                'klein': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '小的', example: 'Das ist ein kleines Auto.' },
+                        { def: '矮的', example: 'Sie ist klein.' }
+                    ]
+                },
+                'neu': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '新的', example: 'Ich habe ein neues Handy.' }
+                    ]
+                },
+                'alt': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '旧的，老的', example: 'Das ist ein altes Buch.' },
+                        { def: '年老的', example: 'Mein Vater ist alt.' }
+                    ]
+                },
+                'jung': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '年轻的', example: 'Sie ist noch jung.' }
+                    ]
+                },
+                'schnell': {
+                    article: '',
+                    plural: '',
+                    type: '形容词/副词',
+                    meanings: [
+                        { def: '快的，快速的', example: 'Das Auto ist sehr schnell.' },
+                        { def: '迅速地', example: 'Komm schnell!' }
+                    ]
+                },
+                'langsam': {
+                    article: '',
+                    plural: '',
+                    type: '形容词/副词',
+                    meanings: [
+                        { def: '慢的', example: 'Der Zug ist langsam.' },
+                        { def: '慢慢地', example: 'Sprich langsam!' }
+                    ]
+                },
+                'lang': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '长的', example: 'Sie hat lange Haare.' }
+                    ]
+                },
+                'kurz': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '短的', example: 'Das ist eine kurze Geschichte.' }
+                    ]
+                },
+                'hell': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '明亮的', example: 'Das Zimmer ist hell.' }
+                    ]
+                },
+                'dunkel': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '黑暗的', example: 'Es ist schon dunkel.' }
+                    ]
+                },
+                'warm': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '温暖的', example: 'Das Wetter ist warm.' }
+                    ]
+                },
+                'kalt': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '冷的', example: 'Das Wasser ist kalt.' }
+                    ]
+                },
+                'teuer': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '贵的', example: 'Das Auto ist sehr teuer.' }
+                    ]
+                },
+                'billig': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '便宜的', example: 'Die Schuhe sind billig.' }
+                    ]
+                },
+                'schwer': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '重的', example: 'Der Koffer ist schwer.' },
+                        { def: '困难的', example: 'Die Prüfung ist schwer.' }
+                    ]
+                },
+                'leicht': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '轻的', example: 'Die Tasche ist leicht.' },
+                        { def: '容易的', example: 'Die Aufgabe ist leicht.' }
+                    ]
+                },
+                'wichtig': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '重要的', example: 'Das ist sehr wichtig.' }
+                    ]
+                },
+                'richtig': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '正确的', example: 'Die Antwort ist richtig.' }
+                    ]
+                },
+                'falsch': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '错误的', example: 'Das ist falsch.' }
+                    ]
+                },
+
+                // ========== 颜色 ==========
+                'rot': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '红色的', example: 'Das Auto ist rot.' }
+                    ]
+                },
+                'blau': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '蓝色的', example: 'Der Himmel ist blau.' }
+                    ]
+                },
+                'grün': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '绿色的', example: 'Das Gras ist grün.' }
+                    ]
+                },
+                'gelb': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '黄色的', example: 'Die Banane ist gelb.' }
+                    ]
+                },
+                'schwarz': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '黑色的', example: 'Die Katze ist schwarz.' }
+                    ]
+                },
+                'weiß': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '白色的', example: 'Der Schnee ist weiß.' }
+                    ]
+                },
+                'braun': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '棕色的', example: 'Der Tisch ist braun.' }
+                    ]
+                },
+                'orange': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '橙色的', example: 'Die Orange ist orange.' }
+                    ]
+                },
+                'rosa': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '粉色的', example: 'Das Kleid ist rosa.' }
+                    ]
+                },
+                'grau': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '灰色的', example: 'Der Himmel ist grau.' }
+                    ]
+                },
+
+                // ========== 数字 ==========
+                'eins': {
+                    article: '',
+                    plural: '',
+                    type: '数词',
+                    meanings: [
+                        { def: '一', example: 'Eins plus eins ist zwei.' }
+                    ]
+                },
+                'zwei': {
+                    article: '',
+                    plural: '',
+                    type: '数词',
+                    meanings: [
+                        { def: '二', example: 'Ich habe zwei Hunde.' }
+                    ]
+                },
+                'drei': {
+                    article: '',
+                    plural: '',
+                    type: '数词',
+                    meanings: [
+                        { def: '三', example: 'Es sind drei Äpfel.' }
+                    ]
+                },
+                'vier': {
+                    article: '',
+                    plural: '',
+                    type: '数词',
+                    meanings: [
+                        { def: '四', example: 'Ich bin vier Jahre alt.' }
+                    ]
+                },
+                'fünf': {
+                    article: '',
+                    plural: '',
+                    type: '数词',
+                    meanings: [
+                        { def: '五', example: 'Um fünf Uhr gehe ich nach Hause.' }
+                    ]
+                },
+                'sechs': {
+                    article: '',
+                    plural: '',
+                    type: '数词',
+                    meanings: [
+                        { def: '六', example: 'Sechs mal zwei ist zwölf.' }
+                    ]
+                },
+                'sieben': {
+                    article: '',
+                    plural: '',
+                    type: '数词',
+                    meanings: [
+                        { def: '七', example: 'Ich arbeite sieben Tage pro Woche.' }
+                    ]
+                },
+                'acht': {
+                    article: '',
+                    plural: '',
+                    type: '数词',
+                    meanings: [
+                        { def: '八', example: 'Es ist acht Uhr.' }
+                    ]
+                },
+                'neun': {
+                    article: '',
+                    plural: '',
+                    type: '数词',
+                    meanings: [
+                        { def: '九', example: 'Ich brauche neun Stühle.' }
+                    ]
+                },
+                'zehn': {
+                    article: '',
+                    plural: '',
+                    type: '数词',
+                    meanings: [
+                        { def: '十', example: 'Zehn Finger habe ich.' }
+                    ]
+                },
+                'zwanzig': {
+                    article: '',
+                    plural: '',
+                    type: '数词',
+                    meanings: [
+                        { def: '二十', example: 'Ich bin zwanzig Jahre alt.' }
+                    ]
+                },
+                'hundert': {
+                    article: '',
+                    plural: '',
+                    type: '数词',
+                    meanings: [
+                        { def: '一百', example: 'Hundert Euro kosten diese Schuhe.' }
+                    ]
+                },
+                'tausend': {
+                    article: '',
+                    plural: '',
+                    type: '数词',
+                    meanings: [
+                        { def: '一千', example: 'Tausend Menschen waren da.' }
+                    ]
+                },
+
+                // ========== 星期 ==========
+                'montag': {
+                    article: 'der',
+                    plural: 'Montage',
+                    type: '名词（阳性）- 星期',
+                    meanings: [
+                        { def: '星期一', example: 'Am Montag gehe ich zur Arbeit.' }
+                    ]
+                },
+                'dienstag': {
+                    article: 'der',
+                    plural: 'Dienstage',
+                    type: '名词（阳性）- 星期',
+                    meanings: [
+                        { def: '星期二', example: 'Dienstag ist mein freier Tag.' }
+                    ]
+                },
+                'mittwoch': {
+                    article: 'der',
+                    plural: 'Mittwoche',
+                    type: '名词（阳性）- 星期',
+                    meanings: [
+                        { def: '星期三', example: 'Mittwoch ist die Mitte der Woche.' }
+                    ]
+                },
+                'donnerstag': {
+                    article: 'der',
+                    plural: 'Donnerstage',
+                    type: '名词（阳性）- 星期',
+                    meanings: [
+                        { def: '星期四', example: 'Donnerstag habe ich einen Termin.' }
+                    ]
+                },
+                'freitag': {
+                    article: 'der',
+                    plural: 'Freitage',
+                    type: '名词（阳性）- 星期',
+                    meanings: [
+                        { def: '星期五', example: 'Freitag ist mein Lieblingstag.' }
+                    ]
+                },
+                'samstag': {
+                    article: 'der',
+                    plural: 'Samstage',
+                    type: '名词（阳性）- 星期',
+                    meanings: [
+                        { def: '星期六', example: 'Am Samstag gehe ich einkaufen.' }
+                    ]
+                },
+                'sonntag': {
+                    article: 'der',
+                    plural: 'Sonntage',
+                    type: '名词（阳性）- 星期',
+                    meanings: [
+                        { def: '星期日', example: 'Sonntag ist Ruhetag.' }
+                    ]
+                },
+
+                // ========== 月份 ==========
+                'januar': {
+                    article: 'der',
+                    plural: '-',
+                    type: '名词（阳性）- 月份',
+                    meanings: [
+                        { def: '一月', example: 'Im Januar ist es kalt.' }
+                    ]
+                },
+                'februar': {
+                    article: 'der',
+                    plural: '-',
+                    type: '名词（阳性）- 月份',
+                    meanings: [
+                        { def: '二月', example: 'Februar hat 28 Tage.' }
+                    ]
+                },
+                'märz': {
+                    article: 'der',
+                    plural: '-',
+                    type: '名词（阳性）- 月份',
+                    meanings: [
+                        { def: '三月', example: 'Im März beginnt der Frühling.' }
+                    ]
+                },
+                'april': {
+                    article: 'der',
+                    plural: '-',
+                    type: '名词（阳性）- 月份',
+                    meanings: [
+                        { def: '四月', example: 'Im April regnet es viel.' }
+                    ]
+                },
+                'mai': {
+                    article: 'der',
+                    plural: '-',
+                    type: '名词（阳性）- 月份',
+                    meanings: [
+                        { def: '五月', example: 'Der Mai ist ein schöner Monat.' }
+                    ]
+                },
+                'juni': {
+                    article: 'der',
+                    plural: '-',
+                    type: '名词（阳性）- 月份',
+                    meanings: [
+                        { def: '六月', example: 'Im Juni ist es warm.' }
+                    ]
+                },
+                'juli': {
+                    article: 'der',
+                    plural: '-',
+                    type: '名词（阳性）- 月份',
+                    meanings: [
+                        { def: '七月', example: 'Juli ist Sommerzeit.' }
+                    ]
+                },
+                'august': {
+                    article: 'der',
+                    plural: '-',
+                    type: '名词（阳性）- 月份',
+                    meanings: [
+                        { def: '八月', example: 'Im August mache ich Urlaub.' }
+                    ]
+                },
+                'september': {
+                    article: 'der',
+                    plural: '-',
+                    type: '名词（阳性）- 月份',
+                    meanings: [
+                        { def: '九月', example: 'Im September beginnt die Schule.' }
+                    ]
+                },
+                'oktober': {
+                    article: 'der',
+                    plural: '-',
+                    type: '名词（阳性）- 月份',
+                    meanings: [
+                        { def: '十月', example: 'Im Oktober ist Herbst.' }
+                    ]
+                },
+                'november': {
+                    article: 'der',
+                    plural: '-',
+                    type: '名词（阳性）- 月份',
+                    meanings: [
+                        { def: '十一月', example: 'November ist kühl und neblig.' }
+                    ]
+                },
+                'dezember': {
+                    article: 'der',
+                    plural: '-',
+                    type: '名词（阳性）- 月份',
+                    meanings: [
+                        { def: '十二月', example: 'Im Dezember ist Weihnachten.' }
+                    ]
+                },
+
+                // ========== 身体部位 ==========
+                'kopf': {
+                    article: 'der',
+                    plural: 'Köpfe',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '头', example: 'Mein Kopf tut weh.' }
+                    ]
+                },
+                'auge': {
+                    article: 'das',
+                    plural: 'Augen',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '眼睛', example: 'Ich habe blaue Augen.' }
+                    ]
+                },
+                'ohr': {
+                    article: 'das',
+                    plural: 'Ohren',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '耳朵', example: 'Die Ohren sind wichtig zum Hören.' }
+                    ]
+                },
+                'nase': {
+                    article: 'die',
+                    plural: 'Nasen',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '鼻子', example: 'Meine Nase ist klein.' }
+                    ]
+                },
+                'mund': {
+                    article: 'der',
+                    plural: 'Münder',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '嘴巴', example: 'Öffne deinen Mund!' }
+                    ]
+                },
+                'zahn': {
+                    article: 'der',
+                    plural: 'Zähne',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '牙齿', example: 'Ich putze meine Zähne.' }
+                    ]
+                },
+                'haar': {
+                    article: 'das',
+                    plural: 'Haare',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '头发', example: 'Sie hat lange Haare.' }
+                    ]
+                },
+                'fuß': {
+                    article: 'der',
+                    plural: 'Füße',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '脚', example: 'Meine Füße sind müde.' }
+                    ]
+                },
+                'bein': {
+                    article: 'das',
+                    plural: 'Beine',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '腿', example: 'Das Bein tut weh.' }
+                    ]
+                },
+                'arm': {
+                    article: 'der',
+                    plural: 'Arme',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '手臂', example: 'Ich habe zwei Arme.' }
+                    ]
+                },
+                'finger': {
+                    article: 'der',
+                    plural: 'Finger',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '手指', example: 'Ich habe zehn Finger.' }
+                    ]
+                },
+                'herz': {
+                    article: 'das',
+                    plural: 'Herzen',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '心脏', example: 'Mein Herz schlägt schnell.' }
+                    ]
+                },
+
+                // ========== 食物和饮料 ==========
+                'fleisch': {
+                    article: 'das',
+                    plural: '-',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '肉', example: 'Ich esse kein Fleisch.' }
+                    ]
+                },
+                'fisch': {
+                    article: 'der',
+                    plural: 'Fische',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '鱼', example: 'Fisch ist gesund.' }
+                    ]
+                },
+                'gemüse': {
+                    article: 'das',
+                    plural: '-',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '蔬菜', example: 'Ich esse gern Gemüse.' }
+                    ]
+                },
+                'obst': {
+                    article: 'das',
+                    plural: '-',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '水果', example: 'Obst ist gesund.' }
+                    ]
+                },
+                'milch': {
+                    article: 'die',
+                    plural: '-',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '牛奶', example: 'Ich trinke Milch zum Frühstück.' }
+                    ]
+                },
+                'butter': {
+                    article: 'die',
+                    plural: '-',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '黄油', example: 'Butter auf Brot schmeckt gut.' }
+                    ]
+                },
+                'ei': {
+                    article: 'das',
+                    plural: 'Eier',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '鸡蛋', example: 'Ich esse ein Ei zum Frühstück.' }
+                    ]
+                },
+                'reis': {
+                    article: 'der',
+                    plural: '-',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '米饭', example: 'Ich koche Reis.' }
+                    ]
+                },
+                'nudeln': {
+                    article: 'die',
+                    plural: '-',
+                    type: '名词（复数）',
+                    meanings: [
+                        { def: '面条', example: 'Nudeln mit Soße schmecken gut.' }
+                    ]
+                },
+                'kuchen': {
+                    article: 'der',
+                    plural: 'Kuchen',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '蛋糕', example: 'Der Kuchen ist sehr lecker.' }
+                    ]
+                },
+                'wein': {
+                    article: 'der',
+                    plural: 'Weine',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '葡萄酒', example: 'Ein Glas Wein, bitte.' }
+                    ]
+                },
+                'saft': {
+                    article: 'der',
+                    plural: 'Säfte',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '果汁', example: 'Ich trinke Orangensaft.' }
+                    ]
+                },
+
+                // ========== 交通工具 ==========
+                'zug': {
+                    article: 'der',
+                    plural: 'Züge',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '火车', example: 'Der Zug fährt um 10 Uhr.' }
+                    ]
+                },
+                'bus': {
+                    article: 'der',
+                    plural: 'Busse',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '公共汽车', example: 'Ich nehme den Bus zur Arbeit.' }
+                    ]
+                },
+                'flugzeug': {
+                    article: 'das',
+                    plural: 'Flugzeuge',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '飞机', example: 'Das Flugzeug fliegt nach Berlin.' }
+                    ]
+                },
+                'fahrrad': {
+                    article: 'das',
+                    plural: 'Fahrräder',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '自行车', example: 'Ich fahre mit dem Fahrrad.' }
+                    ]
+                },
+                'schiff': {
+                    article: 'das',
+                    plural: 'Schiffe',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '船', example: 'Das Schiff ist sehr groß.' }
+                    ]
+                },
+                'motorrad': {
+                    article: 'das',
+                    plural: 'Motorräder',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '摩托车', example: 'Er fährt ein schnelles Motorrad.' }
+                    ]
+                },
+
+                // ========== 职业 ==========
+                'ingenieur': {
+                    article: 'der',
+                    plural: 'Ingenieure',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '工程师', example: 'Er ist Ingenieur von Beruf.' }
+                    ]
+                },
+                'koch': {
+                    article: 'der',
+                    plural: 'Köche',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '厨师', example: 'Der Koch bereitet das Essen zu.' }
+                    ]
+                },
+                'krankenschwester': {
+                    article: 'die',
+                    plural: 'Krankenschwestern',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '护士', example: 'Die Krankenschwester hilft den Patienten.' }
+                    ]
+                },
+                'polizist': {
+                    article: 'der',
+                    plural: 'Polizisten',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '警察', example: 'Der Polizist regelt den Verkehr.' }
+                    ]
+                },
+                'verkäufer': {
+                    article: 'der',
+                    plural: 'Verkäufer',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '售货员', example: 'Der Verkäufer hilft mir.' }
+                    ]
+                },
+                'student': {
+                    article: 'der',
+                    plural: 'Studenten',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '大学生', example: 'Er ist Student an der Universität.' }
+                    ]
+                },
+                'anwalt': {
+                    article: 'der',
+                    plural: 'Anwälte',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '律师', example: 'Ich brauche einen Anwalt.' }
+                    ]
+                },
+
+                // ========== 地点 ==========
+                'bahnhof': {
+                    article: 'der',
+                    plural: 'Bahnhöfe',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '火车站', example: 'Wir treffen uns am Bahnhof.' }
+                    ]
+                },
+                'flughafen': {
+                    article: 'der',
+                    plural: 'Flughäfen',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '机场', example: 'Der Flughafen ist sehr groß.' }
+                    ]
+                },
+                'krankenhaus': {
+                    article: 'das',
+                    plural: 'Krankenhäuser',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '医院', example: 'Mein Vater ist im Krankenhaus.' }
+                    ]
+                },
+                'restaurant': {
+                    article: 'das',
+                    plural: 'Restaurants',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '餐厅', example: 'Das Restaurant ist sehr gut.' }
+                    ]
+                },
+                'hotel': {
+                    article: 'das',
+                    plural: 'Hotels',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '酒店', example: 'Wir übernachten im Hotel.' }
+                    ]
+                },
+                'bank': {
+                    article: 'die',
+                    plural: 'Banken',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '银行', example: 'Ich gehe zur Bank.' }
+                    ]
+                },
+                'supermarkt': {
+                    article: 'der',
+                    plural: 'Supermärkte',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '超市', example: 'Ich kaufe im Supermarkt ein.' }
+                    ]
+                },
+                'park': {
+                    article: 'der',
+                    plural: 'Parks',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '公园', example: 'Wir gehen in den Park.' }
+                    ]
+                },
+                'bibliothek': {
+                    article: 'die',
+                    plural: 'Bibliotheken',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '图书馆', example: 'In der Bibliothek ist es ruhig.' }
+                    ]
+                },
+                'museum': {
+                    article: 'das',
+                    plural: 'Museen',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '博物馆', example: 'Wir besuchen das Museum.' }
+                    ]
+                },
+                'kirche': {
+                    article: 'die',
+                    plural: 'Kirchen',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '教堂', example: 'Die Kirche ist alt und schön.' }
+                    ]
+                },
+
+                // ========== 情绪和感觉 ==========
+                'glücklich': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '幸福的，快乐的', example: 'Ich bin sehr glücklich.' }
+                    ]
+                },
+                'traurig': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '悲伤的', example: 'Sie ist traurig.' }
+                    ]
+                },
+                'müde': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '累的，疲倦的', example: 'Ich bin sehr müde.' }
+                    ]
+                },
+                'hungrig': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '饿的', example: 'Ich bin hungrig.' }
+                    ]
+                },
+                'durstig': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '渴的', example: 'Ich bin durstig.' }
+                    ]
+                },
+                'krank': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '生病的', example: 'Ich bin krank.' }
+                    ]
+                },
+                'gesund': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '健康的', example: 'Er ist gesund und fit.' }
+                    ]
+                },
+                'nervös': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '紧张的', example: 'Ich bin vor der Prüfung nervös.' }
+                    ]
+                },
+                'froh': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '高兴的', example: 'Ich bin froh, dich zu sehen.' }
+                    ]
+                },
+                'böse': {
+                    article: '',
+                    plural: '',
+                    type: '形容词',
+                    meanings: [
+                        { def: '生气的', example: 'Er ist böse auf mich.' }
+                    ]
+                },
+
+                // ========== 时间相关 ==========
+                'heute': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '今天', example: 'Heute ist Montag.' }
+                    ]
+                },
+                'morgen': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '明天', example: 'Morgen gehe ich einkaufen.' }
+                    ]
+                },
+                'gestern': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '昨天', example: 'Gestern war ich im Kino.' }
+                    ]
+                },
+                'jetzt': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '现在', example: 'Ich muss jetzt gehen.' }
+                    ]
+                },
+                'später': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '稍后', example: 'Ich komme später.' }
+                    ]
+                },
+                'früh': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '早', example: 'Ich stehe früh auf.' }
+                    ]
+                },
+                'spät': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '晚', example: 'Es ist schon spät.' }
+                    ]
+                },
+                'immer': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '总是', example: 'Ich bin immer pünktlich.' }
+                    ]
+                },
+                'nie': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '从不', example: 'Ich esse nie Fleisch.' }
+                    ]
+                },
+                'manchmal': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '有时', example: 'Manchmal gehe ich ins Kino.' }
+                    ]
+                },
+                'oft': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '经常', example: 'Ich gehe oft spazieren.' }
+                    ]
+                },
+
+                // ========== 方位词 ==========
+                'hier': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '这里', example: 'Ich bin hier.' }
+                    ]
+                },
+                'dort': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '那里', example: 'Das Buch liegt dort.' }
+                    ]
+                },
+                'oben': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '上面', example: 'Das Zimmer ist oben.' }
+                    ]
+                },
+                'unten': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '下面', example: 'Die Küche ist unten.' }
+                    ]
+                },
+                'links': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '左边', example: 'Biegen Sie links ab.' }
+                    ]
+                },
+                'rechts': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '右边', example: 'Das Restaurant ist rechts.' }
+                    ]
+                },
+                'vorne': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '前面', example: 'Er sitzt vorne.' }
+                    ]
+                },
+                'hinten': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '后面', example: 'Das Auto ist hinten.' }
+                    ]
+                },
+
+                // ========== 常用介词和连词 ==========
+                'und': {
+                    article: '',
+                    plural: '',
+                    type: '连词',
+                    meanings: [
+                        { def: '和，与', example: 'Ich und du gehen zusammen.' }
+                    ]
+                },
+                'oder': {
+                    article: '',
+                    plural: '',
+                    type: '连词',
+                    meanings: [
+                        { def: '或者', example: 'Tee oder Kaffee?' }
+                    ]
+                },
+                'aber': {
+                    article: '',
+                    plural: '',
+                    type: '连词',
+                    meanings: [
+                        { def: '但是', example: 'Ich bin müde, aber glücklich.' }
+                    ]
+                },
+                'weil': {
+                    article: '',
+                    plural: '',
+                    type: '连词',
+                    meanings: [
+                        { def: '因为', example: 'Ich bleibe zu Hause, weil ich krank bin.' }
+                    ]
+                },
+                'wenn': {
+                    article: '',
+                    plural: '',
+                    type: '连词',
+                    meanings: [
+                        { def: '如果，当', example: 'Wenn es regnet, bleibe ich zu Hause.' }
+                    ]
+                },
+                'dass': {
+                    article: '',
+                    plural: '',
+                    type: '连词',
+                    meanings: [
+                        { def: '那，以至于', example: 'Ich denke, dass du recht hast.' }
+                    ]
+                },
+                'in': {
+                    article: '',
+                    plural: '',
+                    type: '介词',
+                    meanings: [
+                        { def: '在...里面', example: 'Ich bin in Berlin.' }
+                    ]
+                },
+                'auf': {
+                    article: '',
+                    plural: '',
+                    type: '介词',
+                    meanings: [
+                        { def: '在...上面', example: 'Das Buch liegt auf dem Tisch.' }
+                    ]
+                },
+                'mit': {
+                    article: '',
+                    plural: '',
+                    type: '介词',
+                    meanings: [
+                        { def: '和...一起，用', example: 'Ich gehe mit dir.' }
+                    ]
+                },
+                'von': {
+                    article: '',
+                    plural: '',
+                    type: '介词',
+                    meanings: [
+                        { def: '从，由', example: 'Ich komme von der Arbeit.' }
+                    ]
+                },
+                'zu': {
+                    article: '',
+                    plural: '',
+                    type: '介词',
+                    meanings: [
+                        { def: '到，向', example: 'Ich gehe zu dir.' }
+                    ]
+                },
+                'für': {
+                    article: '',
+                    plural: '',
+                    type: '介词',
+                    meanings: [
+                        { def: '为了', example: 'Das ist für dich.' }
+                    ]
+                },
+                'ohne': {
+                    article: '',
+                    plural: '',
+                    type: '介词',
+                    meanings: [
+                        { def: '没有', example: 'Ich gehe ohne dich.' }
+                    ]
+                },
+                'durch': {
+                    article: '',
+                    plural: '',
+                    type: '介词',
+                    meanings: [
+                        { def: '通过', example: 'Wir gehen durch den Park.' }
+                    ]
+                },
+                'bei': {
+                    article: '',
+                    plural: '',
+                    type: '介词',
+                    meanings: [
+                        { def: '在...旁边，在...处', example: 'Ich wohne bei meinen Eltern.' }
+                    ]
+                },
+                'nach': {
+                    article: '',
+                    plural: '',
+                    type: '介词',
+                    meanings: [
+                        { def: '在...之后，去', example: 'Nach der Arbeit gehe ich nach Hause.' }
+                    ]
+                },
+
+                // ========== 常用副词 ==========
+                'sehr': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '非常', example: 'Das ist sehr gut.' }
+                    ]
+                },
+                'auch': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '也', example: 'Ich komme auch.' }
+                    ]
+                },
+                'nur': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '只，仅仅', example: 'Ich habe nur fünf Euro.' }
+                    ]
+                },
+                'noch': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '还，仍然', example: 'Ich bin noch hier.' }
+                    ]
+                },
+                'schon': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '已经', example: 'Ich bin schon fertig.' }
+                    ]
+                },
+                'gern': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '乐意，喜欢', example: 'Ich esse gern Schokolade.' }
+                    ]
+                },
+                'zusammen': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '一起', example: 'Wir gehen zusammen.' }
+                    ]
+                },
+                'allein': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '独自', example: 'Ich bin allein zu Hause.' }
+                    ]
+                },
+                'vielleicht': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '也许', example: 'Vielleicht komme ich morgen.' }
+                    ]
+                },
+                'natürlich': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '当然', example: 'Natürlich helfe ich dir.' }
+                    ]
+                },
+
+                // ========== 其他常用词 ==========
+                'ja': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '是的', example: 'Ja, das stimmt.' }
+                    ]
+                },
+                'nein': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '不', example: 'Nein, danke.' }
+                    ]
+                },
+                'bitte': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '请，不客气', example: 'Bitte schön!' }
+                    ]
+                },
+                'danke': {
+                    article: '',
+                    plural: '',
+                    type: '副词',
+                    meanings: [
+                        { def: '谢谢', example: 'Danke sehr!' }
+                    ]
+                },
+                'entschuldigung': {
+                    article: 'die',
+                    plural: 'Entschuldigungen',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '对不起，打扰一下', example: 'Entschuldigung, wo ist der Bahnhof?' }
+                    ]
+                },
+                'problem': {
+                    article: 'das',
+                    plural: 'Probleme',
+                    type: '名词（中性）',
+                    meanings: [
+                        { def: '问题', example: 'Das ist kein Problem.' }
+                    ]
+                },
+                'frage': {
+                    article: 'die',
+                    plural: 'Fragen',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '问题，疑问', example: 'Ich habe eine Frage.' }
+                    ]
+                },
+                'antwort': {
+                    article: 'die',
+                    plural: 'Antworten',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '答案，回答', example: 'Das ist die richtige Antwort.' }
+                    ]
+                },
+                'hilfe': {
+                    article: 'die',
+                    plural: '-',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '帮助', example: 'Ich brauche Hilfe.' }
+                    ]
+                },
+                'name': {
+                    article: 'der',
+                    plural: 'Namen',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '名字', example: 'Wie ist dein Name?' }
+                    ]
+                },
+                'nummer': {
+                    article: 'die',
+                    plural: 'Nummern',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '号码', example: 'Was ist deine Telefonnummer?' }
+                    ]
+                },
+                'weg': {
+                    article: 'der',
+                    plural: 'Wege',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '路，道路', example: 'Der Weg ist lang.' }
+                    ]
+                },
+                'straße': {
+                    article: 'die',
+                    plural: 'Straßen',
+                    type: '名词（阴性）',
+                    meanings: [
+                        { def: '街道', example: 'Ich wohne in dieser Straße.' }
+                    ]
+                },
+                'platz': {
+                    article: 'der',
+                    plural: 'Plätze',
+                    type: '名词（阳性）',
+                    meanings: [
+                        { def: '广场，位置', example: 'Ist dieser Platz frei?' }
                     ]
                 }
             };
