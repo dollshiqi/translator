@@ -3139,11 +3139,15 @@
             }, 5000);
         }
 
-        // 支持Enter键快速翻译（Ctrl/Cmd + Enter）
+        // 支持Enter键快速翻译
+        // Enter键：开始翻译
+        // Shift+Enter：换行
         inputText.addEventListener('keydown', function(e) {
-            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault(); // 阻止默认的换行行为
                 translateText();
             }
+            // Shift+Enter 允许正常换行（不需要额外处理）
         });
     </script>
 </body>
