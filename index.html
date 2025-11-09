@@ -513,6 +513,32 @@
             }
         }
 
+        // 处理德语翻译结果（名词大写+冠词，动词小写）
+        function processGermanTranslation(text) {
+            const words = text.trim().split(/\s+/);
+
+            // 只处理单个单词
+            if (words.length === 1) {
+                const word = words[0].toLowerCase();
+                const wordInfo = getGermanWordInfo(word);
+
+                if (wordInfo) {
+                    // 如果是名词，添加冠词并大写首字母
+                    if (wordInfo.article) {
+                        const capitalizedWord = word.charAt(0).toUpperCase() + word.slice(1);
+                        return `${wordInfo.article} ${capitalizedWord}`;
+                    }
+                    // 如果是动词或其他词性，保持小写
+                    else {
+                        return word;
+                    }
+                }
+            }
+
+            // 如果不在词库中或不是单个单词，返回原文本
+            return text;
+        }
+
         // 翻译函数
         async function translateText() {
             const text = inputText.value.trim();
@@ -548,7 +574,13 @@
                 const data = await response.json();
 
                 if (data.responseStatus === 200 && data.responseData && data.responseData.translatedText) {
-                    const translatedText = data.responseData.translatedText;
+                    let translatedText = data.responseData.translatedText;
+
+                    // 如果目标语言是德语，处理名词和动词
+                    if (targetLang === 'de') {
+                        translatedText = processGermanTranslation(translatedText);
+                    }
+
                     currentTranslation = translatedText;
 
                     // 将翻译结果转换为可点击的单词
@@ -563,7 +595,7 @@
                             await fetchEnglishDictionary(translatedText.toLowerCase());
                         } else if (targetLang === 'de') {
                             // 德语词典
-                            await fetchGermanDictionary(translatedText.toLowerCase(), text);
+                            await fetchGermanDictionary(translatedText.toLowerCase().replace(/^(der|die|das)\s+/, ''), text);
                         } else if (targetLang === 'zh') {
                             // 中文暂不显示词典
                             // 可以在未来添加中文词典功能
@@ -1009,6 +1041,7 @@
                     plural: '',
                     type: '动词',
                     conjugation: 'ich habe, du hast, er/sie/es hat',
+                    collocations: ['Zeit haben (有时间)', 'Hunger haben (饿)', 'Recht haben (对)', 'Angst haben (害怕)'],
                     meanings: [
                         { def: '有，拥有', example: 'Ich habe einen Hund.' },
                         { def: '（助动词）已经', example: 'Ich habe gegessen.' }
@@ -1019,6 +1052,7 @@
                     plural: '',
                     type: '动词',
                     conjugation: 'ich bin, du bist, er/sie/es ist',
+                    collocations: ['zu Hause sein (在家)', 'fertig sein (完成)', 'müde sein (累)', 'glücklich sein (快乐)'],
                     meanings: [
                         { def: '是', example: 'Ich bin müde.' },
                         { def: '（助动词）已经', example: 'Ich bin gegangen.' }
@@ -1029,6 +1063,7 @@
                     plural: '',
                     type: '动词',
                     conjugation: 'ich werde, du wirst, er/sie/es wird',
+                    collocations: ['Arzt werden (成为医生)', 'alt werden (变老)', 'krank werden (生病)'],
                     meanings: [
                         { def: '变成，成为', example: 'Ich werde Arzt.' },
                         { def: '（将来时助动词）', example: 'Ich werde lernen.' }
@@ -1039,6 +1074,7 @@
                     plural: '',
                     type: '动词',
                     conjugation: 'ich gehe, du gehst, er/sie/es geht',
+                    collocations: ['nach Hause gehen (回家)', 'zur Arbeit gehen (去工作)', 'spazieren gehen (散步)', 'ins Kino gehen (去电影院)'],
                     meanings: [
                         { def: '走，去', example: 'Ich gehe nach Hause.' },
                         { def: '进行', example: 'Wie geht es dir?' }
@@ -1049,6 +1085,7 @@
                     plural: '',
                     type: '动词',
                     conjugation: 'ich komme, du kommst, er/sie/es kommt',
+                    collocations: ['aus China kommen (来自中国)', 'nach Hause kommen (回家)', 'zu spät kommen (迟到)', 'gut ankommen (顺利到达)'],
                     meanings: [
                         { def: '来', example: 'Ich komme aus China.' },
                         { def: '到达', example: 'Wann kommst du?' }
@@ -1059,6 +1096,7 @@
                     plural: '',
                     type: '动词',
                     conjugation: 'ich mache, du machst, er/sie/es macht',
+                    collocations: ['Hausaufgaben machen (做作业)', 'Urlaub machen (度假)', 'Spaß machen (有趣)', 'Sport machen (做运动)'],
                     meanings: [
                         { def: '做，制作', example: 'Was machst du?' },
                         { def: '使，让', example: 'Das macht Spaß.' }
@@ -1069,6 +1107,7 @@
                     plural: '',
                     type: '动词',
                     conjugation: 'ich sehe, du siehst, er/sie/es sieht',
+                    collocations: ['einen Film sehen (看电影)', 'fern sehen (看电视)', 'sich sehen (见面)'],
                     meanings: [
                         { def: '看见', example: 'Ich sehe einen Vogel.' },
                         { def: '看', example: 'Sieh mal!' }
@@ -1079,6 +1118,7 @@
                     plural: '',
                     type: '情态动词',
                     conjugation: 'ich kann, du kannst, er/sie/es kann',
+                    collocations: ['Deutsch sprechen können (会说德语)', 'schwimmen können (会游泳)', 'Auto fahren können (会开车)'],
                     meanings: [
                         { def: '能够，会', example: 'Ich kann Deutsch sprechen.' },
                         { def: '可能', example: 'Das kann sein.' }
@@ -1089,6 +1129,7 @@
                     plural: '',
                     type: '情态动词',
                     conjugation: 'ich will, du willst, er/sie/es will',
+                    collocations: ['nach Hause wollen (想回家)', 'schlafen wollen (想睡觉)', 'etwas essen wollen (想吃东西)'],
                     meanings: [
                         { def: '想要', example: 'Ich will nach Hause gehen.' }
                     ]
@@ -1098,6 +1139,7 @@
                     plural: '',
                     type: '情态动词',
                     conjugation: 'ich muss, du musst, er/sie/es muss',
+                    collocations: ['arbeiten müssen (必须工作)', 'lernen müssen (必须学习)', 'zum Arzt müssen (必须去看医生)'],
                     meanings: [
                         { def: '必须', example: 'Ich muss arbeiten.' }
                     ]
@@ -1107,6 +1149,7 @@
                     plural: '',
                     type: '情态动词',
                     conjugation: 'ich soll, du sollst, er/sie/es soll',
+                    collocations: ['leise sein sollen (应该安静)', 'pünktlich kommen sollen (应该准时)'],
                     meanings: [
                         { def: '应该', example: 'Du sollst leise sein.' }
                     ]
@@ -1116,6 +1159,7 @@
                     plural: '',
                     type: '情态动词',
                     conjugation: 'ich mag, du magst, er/sie/es mag',
+                    collocations: ['Schokolade mögen (喜欢巧克力)', 'Musik mögen (喜欢音乐)', 'Sport mögen (喜欢运动)'],
                     meanings: [
                         { def: '喜欢', example: 'Ich mag Schokolade.' }
                     ]
@@ -1125,6 +1169,7 @@
                     plural: '',
                     type: '情态动词',
                     conjugation: 'ich darf, du darfst, er/sie/es darf',
+                    collocations: ['reinkommen dürfen (被允许进来)', 'rauchen dürfen (被允许抽烟)', 'Auto fahren dürfen (被允许开车)'],
                     meanings: [
                         { def: '被允许', example: 'Darf ich reinkommen?' }
                     ]
@@ -1134,6 +1179,7 @@
                     plural: '',
                     type: '动词',
                     conjugation: 'ich weiß, du weißt, er/sie/es weiß',
+                    collocations: ['Bescheid wissen (知道)', 'etwas nicht wissen (不知道某事)', 'genau wissen (确切知道)'],
                     meanings: [
                         { def: '知道', example: 'Ich weiß es nicht.' }
                     ]
@@ -1143,6 +1189,7 @@
                     plural: '',
                     type: '动词',
                     conjugation: 'ich sage, du sagst, er/sie/es sagt',
+                    collocations: ['die Wahrheit sagen (说实话)', 'Danke sagen (说谢谢)', 'etwas zu jemandem sagen (对某人说某事)'],
                     meanings: [
                         { def: '说', example: 'Was sagst du?' }
                     ]
@@ -1152,6 +1199,7 @@
                     plural: '',
                     type: '动词',
                     conjugation: 'ich finde, du findest, er/sie/es findet',
+                    collocations: ['den Weg finden (找到路)', 'gut finden (觉得好)', 'eine Lösung finden (找到解决方案)'],
                     meanings: [
                         { def: '找到，发现', example: 'Ich finde das Buch nicht.' },
                         { def: '认为', example: 'Ich finde das gut.' }
@@ -1162,6 +1210,7 @@
                     plural: '',
                     type: '动词',
                     conjugation: 'ich gebe, du gibst, er/sie/es gibt',
+                    collocations: ['ein Geschenk geben (给礼物)', 'Unterricht geben (上课)', 'Bescheid geben (通知)', 'es gibt (有)'],
                     meanings: [
                         { def: '给', example: 'Gib mir das Buch.' },
                         { def: '有（存在）', example: 'Es gibt viele Menschen.' }
@@ -1172,6 +1221,7 @@
                     plural: '',
                     type: '动词',
                     conjugation: 'ich nehme, du nimmst, er/sie/es nimmt',
+                    collocations: ['den Bus nehmen (乘公交)', 'Medikamente nehmen (吃药)', 'Abschied nehmen (告别)'],
                     meanings: [
                         { def: '拿，取', example: 'Nimm dir einen Apfel.' }
                     ]
@@ -1181,6 +1231,7 @@
                     plural: '',
                     type: '动词',
                     conjugation: 'ich trinke, du trinkst, er/sie/es trinkt',
+                    collocations: ['Wasser trinken (喝水)', 'Kaffee trinken (喝咖啡)', 'Bier trinken (喝啤酒)'],
                     meanings: [
                         { def: '喝', example: 'Ich trinke Wasser.' }
                     ]
@@ -1190,6 +1241,7 @@
                     plural: '',
                     type: '动词',
                     conjugation: 'ich spreche, du sprichst, er/sie/es spricht',
+                    collocations: ['Deutsch sprechen (说德语)', 'mit jemandem sprechen (和某人说话)', 'über etwas sprechen (谈论某事)'],
                     meanings: [
                         { def: '说，讲', example: 'Ich spreche Deutsch.' }
                     ]
@@ -1199,6 +1251,7 @@
                     plural: '',
                     type: '动词',
                     conjugation: 'ich lerne, du lernst, er/sie/es lernt',
+                    collocations: ['Deutsch lernen (学德语)', 'Vokabeln lernen (背单词)', 'aus Fehlern lernen (从错误中学习)'],
                     meanings: [
                         { def: '学习', example: 'Ich lerne Deutsch.' }
                     ]
@@ -1208,6 +1261,7 @@
                     plural: '',
                     type: '动词',
                     conjugation: 'ich arbeite, du arbeitest, er/sie/es arbeitet',
+                    collocations: ['in Berlin arbeiten (在柏林工作)', 'als Lehrer arbeiten (当老师)', 'hart arbeiten (努力工作)'],
                     meanings: [
                         { def: '工作', example: 'Ich arbeite in Berlin.' }
                     ]
@@ -1217,6 +1271,7 @@
                     plural: '',
                     type: '动词',
                     conjugation: 'ich wohne, du wohnst, er/sie/es wohnt',
+                    collocations: ['in München wohnen (住在慕尼黑)', 'bei den Eltern wohnen (和父母住)', 'auf dem Land wohnen (住在乡下)'],
                     meanings: [
                         { def: '居住', example: 'Ich wohne in München.' }
                     ]
@@ -1226,6 +1281,7 @@
                     plural: '',
                     type: '动词',
                     conjugation: 'ich kaufe, du kaufst, er/sie/es kauft',
+                    collocations: ['ein Buch kaufen (买书)', 'einkaufen gehen (去购物)', 'im Supermarkt kaufen (在超市买)'],
                     meanings: [
                         { def: '买', example: 'Ich kaufe ein Buch.' }
                     ]
@@ -1235,6 +1291,7 @@
                     plural: '',
                     type: '动词',
                     conjugation: 'ich verkaufe, du verkaufst, er/sie/es verkauft',
+                    collocations: ['das Auto verkaufen (卖车)', 'etwas online verkaufen (网上卖东西)'],
                     meanings: [
                         { def: '卖', example: 'Er verkauft sein Auto.' }
                     ]
@@ -1244,6 +1301,7 @@
                     plural: '',
                     type: '动词',
                     conjugation: 'ich schlafe, du schläfst, er/sie/es schläft',
+                    collocations: ['gut schlafen (睡得好)', 'lange schlafen (睡得久)', 'im Bett schlafen (在床上睡)'],
                     meanings: [
                         { def: '睡觉', example: 'Das Baby schläft.' }
                     ]
@@ -2790,6 +2848,18 @@
 
             html += `</div>`;
             html += `</div>`;
+
+            // 显示动词常用搭配
+            if (wordInfo.collocations && wordInfo.collocations.length > 0) {
+                html += `<div class="meaning-block">`;
+                html += `<span class="part-of-speech">常用搭配</span>`;
+                html += `<div class="definition">`;
+                wordInfo.collocations.forEach((collocation, index) => {
+                    html += `<div class="definition-item">${collocation}</div>`;
+                });
+                html += `</div>`;
+                html += `</div>`;
+            }
 
             html += `</div>`;
 
